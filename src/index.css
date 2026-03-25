@@ -1,0 +1,47 @@
+:root {
+  --verde-principal: #5cb31b;
+  --verde-escuro: #4a9116;
+  --azul-fundo: #0a0e27;
+  --branco: #ffffff;
+  --cinza-claro: #f4f4f4;
+  --texto-suave: #666;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --verde-principal: #5cb31b;   
+  --verde-escuro: #4a9116;      
+  --azul-escuro-fundo: #0a0e27; 
+  --cinza-texto: #333333;
+  --cinza-suave: #666666;
+  --branco: #ffffff;
+  --cinza-fundo-claro: #f4f4f4;
+  --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--cinza-fundo-claro);
+  color: var(--cinza-texto);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
