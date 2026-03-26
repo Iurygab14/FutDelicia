@@ -52,7 +52,7 @@ function Faq() {
 
     return(
         <div>
-            {/*SEÇÃO: SAIBA MAIS SOBRE NÓS */}
+            {/* SAIBA MAIS SOBRE NÓS */}
             <section className="about-us-section">
                 <div className="about-header">
                 <h2>Saiba mais sobre nós!</h2>
@@ -86,7 +86,7 @@ function Faq() {
 
                 <div className="about-content-box">
                 {abaPrincipal === 'faq' ? (
-                    /* CONTEÚDO DA FAQ */
+                    /* FAQ */
                     <>
                     <div className="faq-side">
                         <button className={`faq-item ${faqAtiva === 'funciona' ? 'active' : ''}`} onClick={() => setFaqAtiva('funciona')}>Como funciona o Futdelicia</button>
@@ -107,7 +107,7 @@ function Faq() {
                     </div>
                     </>
                 ) : (
-                    /* CONTEÚDO DAS OUTRAS ABAS */
+                    /* OUTRAS ABAS */
                     <div className="other-tabs-content">
                     <h3>{conteudosAbas[abaPrincipal].titulo}</h3>
                     <p className="large-text">{conteudosAbas[abaPrincipal].texto}</p>

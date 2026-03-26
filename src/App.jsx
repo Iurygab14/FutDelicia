@@ -1,4 +1,3 @@
-import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
 import Navbar from './components/Navbar';
 import AcompanharPedido from './components/AcompanharPedido';
@@ -7,12 +6,15 @@ import Ofertas from './components/Ofertas';
 import Suporte from './components/Suporte';
 import Home from "./components/home/Home";
 import Footer from './components/Footer';
+import { Routes, Route } from 'react-router-dom';
+import Scroll from './components/Scroll'; 
 
 function App() {
-
   return (
     <div>
-      <Navbar/>
+      <Scroll />
+      <Navbar />
+      
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,9 +25,10 @@ function App() {
           <Route path="/Suporte" element={<Suporte />} />
         </Routes>
       </main>
-      <Footer/>
+
+      <Footer />
     </div>
-  )
+  );
 }
 
 export default App

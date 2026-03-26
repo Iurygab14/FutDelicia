@@ -404,7 +404,7 @@
   min-width: 300px;
   min-height: 250px;
   justify-content: center;
-  border: 2px solid #5cb31b; /* Borda verde para destacar a resposta */
+  border: 2px solid #5cb31b; 
   animation: fadeIn 0.4s ease;
 }
 
@@ -422,7 +422,6 @@
   font-weight: bold;
 }
 
-/* Lado dos Cards Brancos */
 .info-cards-side {
   flex: 2;
   display: flex;

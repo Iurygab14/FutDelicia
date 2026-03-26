@@ -7,6 +7,7 @@ import massa from "C:/Users/Windows 11/futdelicia/src/imgs/massa.jpg";
 import pizza from "C:/Users/Windows 11/futdelicia/src/imgs/pizza.jpg";
 import cafe from "C:/Users/Windows 11/futdelicia/src/imgs/cafe.jpg";
 import sopas from "C:/Users/Windows 11/futdelicia/src/imgs/sopas.avif";
+import { Link } from 'react-router-dom';
 
 function OfertasEspeciais() {
     return(
@@ -14,21 +15,26 @@ function OfertasEspeciais() {
             {/* SEÇÃO DE OFERTAS */}
             <section className="promo-section">
                 <div className="promo-grid">
-                <div className="promo-card">
-                    <img src={fastFood} alt="Fast Food" />
-                    <span className="badge">-40%</span>
-                    <div className="promo-info"><h3>Fast Food</h3></div>
-                </div>
-                <div className="promo-card">
-                    <img src={comidaVegana} alt="Comida Vegana" />
-                    <span className="badge">-20%</span>
-                    <div className="promo-info"><h3>Comida Vegana</h3></div>
-                </div>
-                <div className="promo-card">
-                    <img src={doces} alt="Doces" />
-                    <span className="badge">-30%</span>
-                    <div className="promo-info"><h3>Doces</h3></div>
-                </div>
+                    {/* CARD FAST FOOD */}
+                    <Link to="/ofertas#hambúrgueres" className="promo-card">
+                        <img src={fastFood} alt="Fast Food" />
+                        <span className="badge">-40%</span>
+                        <div className="promo-info"><h3>Fast Food</h3></div>
+                    </Link>
+
+                    {/* CARD VEGANA */}
+                    <Link to="/ofertas#saladas" className="promo-card">
+                        <img src={comidaVegana} alt="Comida Vegana" />
+                        <span className="badge">-20%</span>
+                        <div className="promo-info"><h3>Comida Vegana</h3></div>
+                    </Link>
+
+                    {/* CARD SOBREMESAS */}
+                    <Link to="/ofertas#sobremesas" className="promo-card">
+                        <img src={doces} alt="Doces" />
+                        <span className="badge">-30%</span>
+                        <div className="promo-info"><h3>Sobremesas</h3></div>
+                    </Link>
                 </div>
             </section>
 

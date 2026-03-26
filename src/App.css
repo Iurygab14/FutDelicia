@@ -3,6 +3,7 @@ main {
   margin: 0 auto;
   padding: 40px 20px;
   min-height: calc(100vh - 100px);
+  margin-top: 50px;
 }
 
 .home-container {
