@@ -4,20 +4,24 @@
     padding: 0 20px;
 }
 
-.secao-produtos {
-    margin-bottom: 50px;
+.secao-categoria {
+    margin-bottom: 60px;
+    scroll-margin-top: 100px; 
 }
 
-.secao-titulo {
+.titulo-categoria {
     color: #58b324; 
     font-size: 2rem;
     font-weight: 800;
     margin-bottom: 25px;
+    text-transform: capitalize; 
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
 }
 
 .produtos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
 }
 
@@ -29,11 +33,12 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .produto-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .produto-detalhes {
@@ -53,61 +58,65 @@
     color: #666;
     margin-bottom: 15px;
     line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.preco-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 2px;
+}
+
+.preco-original {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.preco-promo {
+    color: #2ecc71;
+    font-weight: 800;
+    font-size: 1.2rem;
 }
 
 .produto-imagem-wrapper {
     position: relative;
-    width: 120px;
+    width: 100px;
     height: 100px;
+    flex-shrink: 0;
 }
 
 .produto-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: #f9f9f9;
 }
 
-.btn-add-item {
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    background-color: #050a14;
-    color: white;
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
 
 .btn-add-item:hover {
     background-color: #58b324; 
 }
 
-.preco {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
 
-.preco-original {
-  text-decoration: line-through;
-  color: #999;
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
-
-.preco-promo {
-  color: #2ecc71;
-  font-weight: bold;
-  font-size: 1.1rem;
-  font-weight: bold;
+.btn-add-item {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    background-color: #050a14;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }

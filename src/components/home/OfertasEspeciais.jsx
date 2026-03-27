@@ -3,13 +3,18 @@ import comidaVegana from "C:/Users/Windows 11/futdelicia/src/imgs/comidaVegana.j
 import doces from "C:/Users/Windows 11/futdelicia/src/imgs/doces.jpg";
 import hamburguer from "C:/Users/Windows 11/futdelicia/src/imgs/hamburguer.jpg";
 import salada from "C:/Users/Windows 11/futdelicia/src/imgs/salada.jpg";
-import massa from "C:/Users/Windows 11/futdelicia/src/imgs/massa.jpg";
-import pizza from "C:/Users/Windows 11/futdelicia/src/imgs/pizza.jpg";
-import cafe from "C:/Users/Windows 11/futdelicia/src/imgs/cafe.jpg";
+import massa from "C:/Users/Windows 11/futdelicia/src/imgs/massas.jpg";
+import pizza from "C:/Users/Windows 11/futdelicia/src/imgs/pizzas.jpg";
+import cafe from "C:/Users/Windows 11/futdelicia/src/imgs/cafes.jpg";
 import sopas from "C:/Users/Windows 11/futdelicia/src/imgs/sopas.avif";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function OfertasEspeciais() {
+
+    const navigate = useNavigate();
+    const handleCategoryClick = (categoria) => {navigate(`/cardapio?categoria=${categoria}`);};
+
     return(
         <div>
             {/* SEÇÃO DE OFERTAS */}
@@ -42,25 +47,25 @@ function OfertasEspeciais() {
             <section className="categories-section">
                 <h2 className="categories-title">Opções Populares</h2>
                 <div className="categories-grid">
-                <div className="category-item" onClick={() => handleCategoryClick('hamburguer')}>
-                    <div className="category-img-box yellow"><img src={hamburguer} alt="Hamburguer" /></div>
-                    <div className="category-name">Hamburgueres</div>
+                <div className="category-item" onClick={() => handleCategoryClick('hambúrgueres')}>
+                    <div className="category-img-box yellow"><img src={hamburguer} alt="Hambúrgueres" /></div>
+                    <div className="category-name">Hambúrgueres</div>
                 </div>
                 <div className="category-item" onClick={() => handleCategoryClick('saladas')}>
-                    <div className="category-img-box"><img src={salada} alt="Salada" /></div>
+                    <div className="category-img-box"><img src={salada} alt="Saladas" /></div>
                     <div className="category-name">Saladas</div>
                 </div>
-                <div className="category-item" onClick={() => handleCategoryClick('massa')}>
-                    <div className="category-img-box"><img src={massa} alt="Massa" /></div>
-                    <div className="category-name">Massa</div>
+                <div className="category-item" onClick={() => handleCategoryClick('massas')}>
+                    <div className="category-img-box"><img src={massa} alt="Massas" /></div>
+                    <div className="category-name">Massas</div>
                 </div>
-                <div className="category-item" onClick={() => handleCategoryClick('pizza')}>
-                    <div className="category-img-box"><img src={pizza} alt="Pizza" /></div>
-                    <div className="category-name">Pizza</div>
+                <div className="category-item" onClick={() => handleCategoryClick('pizzas')}>
+                    <div className="category-img-box"><img src={pizza} alt="Pizzas" /></div>
+                    <div className="category-name">Pizzas</div>
                 </div>
-                <div className="category-item" onClick={() => handleCategoryClick('cafe')}>
-                    <div className="category-img-box"><img src={cafe} alt="Café" /></div>
-                    <div className="category-name">Café da Manhã</div>
+                <div className="category-item" onClick={() => handleCategoryClick('cafés-da-manhã')}>
+                    <div className="category-img-box"><img src={cafe} alt="Cafés" /></div>
+                    <div className="category-name">Cafés da Manhã</div>
                 </div>
                 <div className="category-item" onClick={() => handleCategoryClick('sopas')}>
                     <div className="category-img-box"><img src={sopas} alt="Sopas" /></div>

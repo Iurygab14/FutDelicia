@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 function Ofertas() {
   const categorias = [
     "Ofertas", "Hambúrgueres", "Batatas fritas", 
-    "Lanches", "Saladas", "Bebidas", "Sobremesas", "Molhos"
+    "Lanches", "Saladas", "Bebidas", "Sobremesas", "Molhos", "Massas", "Pizzas", "Cafés da Manhã", "Sopas"
   ];
 
   const { hash } = useLocation();

@@ -45,7 +45,7 @@ function Footer() {
                     <h4>Links importantes</h4>
                     <ul className="footer-links">
                         <li><a href="#ajuda">Obter ajuda</a></li>
-                        <li><a href="#entregar">Cadastre-se</a></li>
+                        <li><a href="#entregar">Entrar</a></li>
                         <li><a href="#conta">Criar uma conta</a></li>
                     </ul>
                 </div>
