@@ -3,12 +3,14 @@ import { FaSearch } from 'react-icons/fa';
 import '../assets/cardapio.css';
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useCart } from '../context/CarrinhoContext';
 
 function Cardapio() {
   const [categoriaAtiva, setCategoriaAtiva] = useState("todos");
   const [busca, setBusca] = useState("");
   const location = useLocation();
   const categoriasAtt = ["todos", ...new Set(produtos.map(p => p.categoria))];
+  const { addToCart } = useCart();
 
   const produtosFiltrados = produtos.filter(produto => {
     const matchesCategoria = categoriaAtiva === "todos" || produto.categoria === categoriaAtiva;
@@ -69,8 +71,13 @@ function Cardapio() {
               </div>
               <div className="produto-img-box">
                 <img src={produto.img} alt={produto.nome} />
-                <button className="add-btn">+</button>
-              </div>
+                <button 
+                    className="add-btn"
+                    onClick={() => addToCart(produto)}
+                >
+                  +
+                </button>
+            </div>
             </div>
           ))
         ) : (

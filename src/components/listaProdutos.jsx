@@ -1,11 +1,15 @@
 import "C:/Users/Windows 11/futdelicia/src/assets/listaProdutos.css";
 import { produtos } from '../data/produtos';
+import { useCart } from "../context/CarrinhoContext";
 
-function ListaProdutos(){
-    const produtosEmOferta = produtos.filter(p => p.oferta === true);
+function ListaProdutos({ filtro }){
+    const produtosEmOferta = produtos.filter(p => 
+      p.oferta === true && p.nome.toLowerCase().includes(filtro.toLowerCase())
+  );
 
     const categoriasUnicas = [...new Set(produtosEmOferta.map(p => p.categoria))];
-
+    const { addToCart } = useCart();
+    
     return (
     <div className="produtos-container">
       {categoriasUnicas.map(categoria => {
@@ -41,7 +45,12 @@ function ListaProdutos(){
                       className="produto-img" 
                       alt={produto.nome} 
                     />
-                    <button className="btn-add-item">+</button>
+                    <button 
+                      className="btn-add-item"
+                      onClick={() => addToCart(produto)}
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
               ))}

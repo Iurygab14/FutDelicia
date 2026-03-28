@@ -48,7 +48,7 @@
   font-weight: 500;
   transition: 0.3s;
   font-weight: bold;
-
+  cursor: pointer;
 }
 
 .nav-link:hover {

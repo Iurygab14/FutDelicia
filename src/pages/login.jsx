@@ -29,7 +29,7 @@ function Login() {
             nome: nome, 
             email: email,
             senha: senha,
-            tipo: 'cliente'
+            role: 'cliente'
         };
 
         usuariosSalvos.push(novoUsuario);

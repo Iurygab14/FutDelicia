@@ -1,6 +1,7 @@
 import '../assets/footer.css'; 
 import logoFutdelicia from "../imgs/futdeliciaLogo.png"; 
 import { FaFacebook, FaInstagram, FaTiktok, FaSnapchatGhost } from 'react-icons/fa';
+import { Link } from 'react-router-dom'; 
 
 function Footer() {
     return (
@@ -25,39 +26,39 @@ function Footer() {
                     <p className="spam-notice">não enviamos spam, leia nossa política</p>
                     
                     <div className="social-icons">
-                        <FaFacebook className="social-icon" />
-                        <FaInstagram className="social-icon" />
-                        <FaTiktok className="social-icon" />
-                        <FaSnapchatGhost className="social-icon" />
+                        <a href="https://facebook.com" target="_blank" rel="noreferrer"><FaFacebook className="social-icon" /></a>
+                        <a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram className="social-icon" /></a>
+                        <a href="https://tiktok.com" target="_blank" rel="noreferrer"><FaTiktok className="social-icon" /></a>
+                        <a href="https://snapchat.com" target="_blank" rel="noreferrer"><FaSnapchatGhost className="social-icon" /></a>
                     </div>
                 </div>
 
                 <div className="footer-col links-col">
                     <h4>Páginas legais</h4>
                     <ul className="footer-links">
-                        <li><a href="#termos">Termos e condições</a></li>
-                        <li><a href="#privacidade">Privacidade</a></li>
-                        <li><a href="#cookies">Cookies</a></li>
+                        <li><Link to="/sobre">Nossa História</Link></li>
+                        <li><Link to="/parcerias">Parcerias</Link></li>
+                        <li><Link to="/privacidade">Privacidade</Link></li>
+                        <li><Link to="/termos">Termos e condições</Link></li>
                     </ul>
                 </div>
 
                 <div className="footer-col links-col">
                     <h4>Links importantes</h4>
                     <ul className="footer-links">
-                        <li><a href="#ajuda">Obter ajuda</a></li>
-                        <li><a href="#entregar">Entrar</a></li>
-                        <li><a href="#conta">Criar uma conta</a></li>
+                        <li><Link to="Suporte">Obter ajuda (FAQ)</Link></li>
+                        <li><Link to="/Login">Entrar</Link></li>
+                        <li><Link to="/Login">Criar uma conta</Link></li>
                     </ul>
                 </div>
             </div>
 
             <div className="footer-bottom">
                 <div className="footer-bottom-content">
-                    <span>Futdelicia Copyright 2024, All Rights Reserved.</span>
+                    <span>Futdelicia Copyright 2026, All Rights Reserved.</span>
                     <div className="bottom-links">
-                        <a href="#privacidade">Política</a>
-                        <a href="#termos">Termos</a>
-                        <a href="#dados">Não vender dados</a>
+                        <Link to="/privacidade">Política</Link>
+                        <Link to="/termos">Termos</Link>
                     </div>
                 </div>
             </div>
