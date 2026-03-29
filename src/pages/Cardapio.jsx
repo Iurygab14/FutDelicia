@@ -6,13 +6,76 @@ import { useLocation } from 'react-router-dom';
 import { useCart } from '../context/CarrinhoContext';
 
 function Cardapio() {
+  // 1. Estados de Dados e Usuário
+  const [itensCardapio, setItensCardapio] = useState([]);
+  const [usuario, setUsuario] = useState(null);
+  
+  // 2. Estados do Formulário/Modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editandoItem, setEditandoItem] = useState(null); // null = novo lanche, {...} = editando
+  const [formData, setFormData] = useState({ nome: '', desc: '', precoOriginal: '', categoria: '', img: '' });
+
   const [categoriaAtiva, setCategoriaAtiva] = useState("todos");
   const [busca, setBusca] = useState("");
   const location = useLocation();
-  const categoriasAtt = ["todos", ...new Set(produtos.map(p => p.categoria))];
   const { addToCart } = useCart();
 
-  const produtosFiltrados = produtos.filter(produto => {
+  // Carregar dados iniciais
+  useEffect(() => {
+    // Carregar Usuário
+    const dadosUsuario = localStorage.getItem('usuario_logado');
+    if (dadosUsuario) setUsuario(JSON.parse(dadosUsuario));
+
+    // Carregar Cardápio (do localStorage ou do arquivo data inicial)
+    const cardapioSalvo = localStorage.getItem('cardapio_futdelicia');
+    if (cardapioSalvo) {
+      setItensCardapio(JSON.parse(cardapioSalvo));
+    } else {
+      setItensCardapio(produtos); // 'produtos' é o seu import do data/produtos
+      localStorage.setItem('cardapio_futdelicia', JSON.stringify(produtos));
+    }
+  }, []);
+
+  // Funções CRUD (Ações do Técnico)
+  const salvarLanche = (e) => {
+    e.preventDefault();
+    let novoCardapio;
+    
+    if (editandoItem) {
+      novoCardapio = itensCardapio.map(p => p.id === editandoItem.id ? { ...formData, id: p.id } : p);
+    } else {
+      const novoLanche = { ...formData, id: Date.now() };
+      novoCardapio = [...itensCardapio, novoLanche];
+    }
+
+    setItensCardapio(novoCardapio);
+    localStorage.setItem('cardapio_futdelicia', JSON.stringify(novoCardapio));
+    fecharModal();
+  };
+
+  const excluirLanche = (id) => {
+    if (window.confirm("Deseja mesmo tirar esse craque do time?")) {
+      const novoCardapio = itensCardapio.filter(p => p.id !== id);
+      setItensCardapio(novoCardapio);
+      localStorage.setItem('cardapio_futdelicia', JSON.stringify(novoCardapio));
+    }
+  };
+
+  const abrirModalParaEditar = (produto) => {
+    setEditandoItem(produto);
+    setFormData(produto);
+    setIsModalOpen(true);
+  };
+
+  const fecharModal = () => {
+    setIsModalOpen(false);
+    setEditandoItem(null);
+    setFormData({ nome: '', desc: '', precoOriginal: '', categoria: '', img: '' });
+  };
+
+  // Filtros usam itensCardapio (o estado) agora
+  const categoriasAtt = ["todos", ...new Set(itensCardapio.map(p => p.categoria))];
+  const produtosFiltrados = itensCardapio.filter(produto => {
     const matchesCategoria = categoriaAtiva === "todos" || produto.categoria === categoriaAtiva;
     const matchesBusca = produto.nome.toLowerCase().includes(busca.toLowerCase());
     return matchesCategoria && matchesBusca;
@@ -34,7 +97,14 @@ function Cardapio() {
       <header className="cardapio-header">
         <h1>Nosso Cardápio</h1>
         
-        {/* Barra de Pesquisa */}
+        {/* NOVO LANCHE*/}
+        {usuario?.role === 'adm' && (
+            <button className="btn-novo-lanche" onClick={() => setIsModalOpen(true)}>
+                + Novo Lanche 
+            </button>
+        )}
+        
+        {/* BARRA DE PESQUISA E FILTRO */}
         <div className="search-wrapper">
           <FaSearch className="search-icon" />
           <input 
@@ -44,8 +114,6 @@ function Cardapio() {
             onChange={(e) => setBusca(e.target.value)}
           />
         </div>
-
-        {/* Filtros de Categoria */}
         <nav className="filtros-nav">
             {categoriasAtt.map(cat => (
             <button 
@@ -59,33 +127,54 @@ function Cardapio() {
         </nav>
       </header>
 
-      {/* Grid de Resultados */}
+      {/* LISTA DE PRODUTOS */}
       <div className="produtos-grid">
-        {produtosFiltrados.length > 0 ? (
-          produtosFiltrados.map(produto => (
-            <div className="produto-card" key={produto.id}>
-              <div className="produto-detalhes">
-                <h3>{produto.nome}</h3>
-                <p>{produto.desc}</p>
-                <span className={produto.precoPromo ? "preco-verde" : "preco-preto"}>{produto.precoPromo || produto.precoOriginal}</span>
-              </div>
-              <div className="produto-img-box">
-                <img src={produto.img} alt={produto.nome} />
-                <button 
-                    className="add-btn"
-                    onClick={() => addToCart(produto)}
-                >
-                  +
-                </button>
+        {produtosFiltrados.map(produto => (
+          <div className="produto-card" key={produto.id}>
+            {/* OPÇÕES ADMIN */}
+            {usuario?.role === 'adm' && (
+                <div className="adm-card-actions">
+                    <button onClick={() => abrirModalParaEditar(produto)}>Editar</button>
+                    <button onClick={() => excluirLanche(produto.id)} className="btn-del">Excluir</button>
+                </div>
+            )}
+
+            <div className="produto-detalhes">
+              <h3>{produto.nome}</h3>
+              <p>{produto.desc}</p>
+              <span className={produto.precoPromo ? "preco-verde" : "preco-preto"}>
+                {produto.precoPromo || produto.precoOriginal}
+              </span>
             </div>
+            
+            <div className="produto-img-box">
+              <img src={produto.img} alt={produto.nome} />
+              <button className="add-btn" onClick={() => addToCart(produto)}>+</button>
             </div>
-          ))
-        ) : (
-          <div className="no-results">
-            <p>Nenhum lanche encontrado para "{busca}"</p>
           </div>
-        )}
+        ))}
       </div>
+
+      {/* FORMULÁRIO */}
+      {isModalOpen && (
+          <div className="modal-overlay">
+              <div className="modal-content">
+                  <h2>{editandoItem ? "Editar Lanche" : "Cadastrar Novo Craque"}</h2>
+                  <form onSubmit={salvarLanche}>
+                      <input type="text" placeholder="Nome do Lanche" value={formData.nome} onChange={e => setFormData({...formData, nome: e.target.value})} required />
+                      <input type="text" placeholder="Descrição" value={formData.desc} onChange={e => setFormData({...formData, desc: e.target.value})} required />
+                      <input type="text" placeholder="Preço (Ex: R$ 25,90)" value={formData.precoOriginal} onChange={e => setFormData({...formData, precoOriginal: e.target.value})} required />
+                      <input type="text" placeholder="Categoria" value={formData.categoria} onChange={e => setFormData({...formData, categoria: e.target.value})} required />
+                      <input type="text" placeholder="URL da Imagem" value={formData.img} onChange={e => setFormData({...formData, img: e.target.value})} required />
+                      
+                      <div className="modal-btns">
+                          <button type="submit" className="btn-save">Salvar</button>
+                          <button type="button" onClick={fecharModal} className="btn-cancel">Cancelar</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      )}
     </div>
   );
 }

@@ -195,3 +195,26 @@
 .checkout-btn:active {
     transform: scale(0.98);
 }
+
+.address-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.address-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 10px;
+}

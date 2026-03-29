@@ -17,7 +17,7 @@ function Faq() {
             titulo: "Seja um Parceiro",
             texto: "Tem um restaurante ou é entregador? Junte-se ao time que mais cresce no Brasil.",
             extra: "Oferecemos as menores taxas do mercado e suporte 24h para nossos parceiros.",
-            rota: "../page/parcerias" 
+            rota: "../parcerias" 
         },
         suporte: {
             titulo: "Central de Ajuda",

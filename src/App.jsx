@@ -17,8 +17,6 @@ import { CartProvider } from './context/CarrinhoContext';
 
 function App() {
   const location = useLocation();
-
-  // O JS diferencia maiúsculas. Se sua rota é "/Login", aqui deve ser igual.
   const esconderLayout = location.pathname === '/Login';
 
   return (
@@ -26,7 +24,6 @@ function App() {
     <div>
       <Scroll />
       
-      {/* Só renderiza se NÃO for a rota de Login */}
       {!esconderLayout && <Navbar />}
       
       <main>
@@ -46,7 +43,6 @@ function App() {
         </Routes>
       </main>
 
-      {/* Só renderiza se NÃO for a rota de Login */}
       {!esconderLayout && <Footer />}
     </div>
     </CartProvider>

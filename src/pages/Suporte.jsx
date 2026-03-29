@@ -29,7 +29,7 @@ function Suporte() {
                 <p>Precisa de um auxílio do VAR? Nossa equipe está pronta para entrar em campo.</p>
             </header>
 
-            {/* Cards de Contato Rápido */}
+            {/* CONTATOS */}
             <section className="contato-cards">
                 <div className="card-item-suporte">
                     <FaWhatsapp className="icon-suporte" />
@@ -51,7 +51,7 @@ function Suporte() {
                 </div>
             </section>
 
-            {/* Seção de FAQ */}
+            {/* FAQ */}
             <section className="faq-section-suporte">
                 <h2>Dúvidas Frequentes</h2>
                 <div className="faq-list-suporte">

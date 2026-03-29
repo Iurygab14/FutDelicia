@@ -120,3 +120,17 @@
     justify-content: center;
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }
+
+.btn-admin-remove-oferta {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    z-index: 10;
+}

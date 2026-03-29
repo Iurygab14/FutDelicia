@@ -90,3 +90,36 @@ html {
 .secao-produtos {
   scroll-margin-top: 150px; 
 }
+
+.btn-add-oferta {
+    background-color: #ffd600;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.btn-remove-oferta {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal-content h2 {
+    color:#58b324;
+}
+
+.modal-content label {
+    color: darkgreen;
+}
