@@ -1,4 +1,4 @@
-import "C:/Users/Windows 11/futdelicia/src/assets/headerOfertas.css";
+import "../assets/headerOfertas.css";
 import ListaProdutos from '../components/listaProdutos';
 import React, { useEffect, useState } from 'react';
 

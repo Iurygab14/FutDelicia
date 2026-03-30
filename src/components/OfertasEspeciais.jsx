@@ -1,12 +1,12 @@
-import fastFood from "C:/Users/Windows 11/futdelicia/src/imgs/fastFood.jpg";
-import comidaVegana from "C:/Users/Windows 11/futdelicia/src/imgs/comidaVegana.jpg";
-import doces from "C:/Users/Windows 11/futdelicia/src/imgs/doces.jpg";
-import hamburguer from "C:/Users/Windows 11/futdelicia/src/imgs/hamburguer.jpg";
-import salada from "C:/Users/Windows 11/futdelicia/src/imgs/salada.jpg";
-import massa from "C:/Users/Windows 11/futdelicia/src/imgs/massas.jpg";
-import pizza from "C:/Users/Windows 11/futdelicia/src/imgs/pizzas.jpg";
-import cafe from "C:/Users/Windows 11/futdelicia/src/imgs/cafes.jpg";
-import sopas from "C:/Users/Windows 11/futdelicia/src/imgs/sopas.avif";
+import fastFood from "../imgs/fastFood.jpg";
+import comidaVegana from "../imgs/comidaVegana.jpg";
+import doces from "../imgs/doces.jpg";
+import hamburguer from "../imgs/hamburguer.jpg";
+import salada from "../imgs/salada.jpg";
+import massa from "../imgs/massas.jpg";
+import pizza from "../imgs/pizzas.jpg";
+import cafe from "../imgs/cafes.jpg";
+import sopas from "../imgs/sopas.avif";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 

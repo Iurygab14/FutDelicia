@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "C:/Users/Windows 11/futdelicia/src/assets/suporte.css";
+import "../assets/suporte.css";
 import { FaWhatsapp, FaEnvelope, FaHeadset, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 function Suporte() {

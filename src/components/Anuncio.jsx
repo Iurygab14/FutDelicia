@@ -1,4 +1,4 @@
-import garotaPizza from "C:/Users/Windows 11/futdelicia/src/imgs/garotaPizza.png";
+import garotaPizza from "../imgs/garotaPizza.png";
 
 function Anuncio() {
     
