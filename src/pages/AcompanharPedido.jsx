@@ -43,7 +43,7 @@ function AcompanharPedido() {
     if (!ultimoPedido) {
         return (
             <div className="status-container">
-                <h2 style={{marginTop: '150px'}}>Buscando sua escalação... ⚽</h2>
+                <h2 style={{marginTop: '150px'}}>Buscando sua escalação...</h2>
                 <p>Se demorar, verifique se você já fez um pedido!</p>
             </div>
         );

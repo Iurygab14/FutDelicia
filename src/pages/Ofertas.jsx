@@ -86,7 +86,7 @@ function Ofertas() {
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2>Nova Oferta do Dia ⚽</h2>
+            <h2>Nova Oferta do Dia</h2>
             <form onSubmit={salvarOferta}>
               <label>Escolha o Lanche:</label>
               <select 
@@ -108,7 +108,7 @@ function Ofertas() {
                 onChange={e => {
                   const valor = e.target.value;
                         if (valor === "" || Number(valor) >= 0) {
-                          setFormData({...formData, precoPromo: valor});
+                          setNovaOferta({...novaOferta, precoPromo: valor});
                         }
                       }
                     }
