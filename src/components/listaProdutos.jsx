@@ -34,7 +34,6 @@ function ListaProdutos({ filtro }){
         }
     };
 
-    // Filtramos apenas quem tem precoPromo (ou flag oferta) e bate com a busca
     const produtosEmOferta = produtosData.filter(p => 
         (p.precoPromo || p.oferta) && 
         p.nome.toLowerCase().includes(filtro.toLowerCase())

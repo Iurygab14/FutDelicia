@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Adicionamos useState
+import React, { useState } from 'react';
 import { useCart } from '../context/CarrinhoContext';
 import '../assets/carrinho.css';
 import { useNavigate } from 'react-router-dom';

@@ -6,13 +6,11 @@ import { useLocation } from 'react-router-dom';
 import { useCart } from '../context/CarrinhoContext';
 
 function Cardapio() {
-  // 1. Estados de Dados e Usuário
   const [itensCardapio, setItensCardapio] = useState([]);
   const [usuario, setUsuario] = useState(null);
   
-  // 2. Estados do Formulário/Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editandoItem, setEditandoItem] = useState(null); // null = novo lanche, {...} = editando
+  const [editandoItem, setEditandoItem] = useState(null); 
   const [formData, setFormData] = useState({ nome: '', desc: '', precoOriginal: '', categoria: '', img: '' });
 
   const [categoriaAtiva, setCategoriaAtiva] = useState("todos");
@@ -20,23 +18,19 @@ function Cardapio() {
   const location = useLocation();
   const { addToCart } = useCart();
 
-  // Carregar dados iniciais
   useEffect(() => {
-    // Carregar Usuário
     const dadosUsuario = localStorage.getItem('usuario_logado');
     if (dadosUsuario) setUsuario(JSON.parse(dadosUsuario));
 
-    // Carregar Cardápio (do localStorage ou do arquivo data inicial)
     const cardapioSalvo = localStorage.getItem('cardapio_futdelicia');
     if (cardapioSalvo) {
       setItensCardapio(JSON.parse(cardapioSalvo));
     } else {
-      setItensCardapio(produtos); // 'produtos' é o seu import do data/produtos
+      setItensCardapio(produtos); 
       localStorage.setItem('cardapio_futdelicia', JSON.stringify(produtos));
     }
   }, []);
 
-  // Funções CRUD (Ações do Técnico)
   const salvarLanche = (e) => {
     e.preventDefault();
     let novoCardapio;
@@ -73,7 +67,6 @@ function Cardapio() {
     setFormData({ nome: '', desc: '', precoOriginal: '', categoria: '', img: '' });
   };
 
-  // Filtros usam itensCardapio (o estado) agora
   const categoriasAtt = ["todos", ...new Set(itensCardapio.map(p => p.categoria))];
   const produtosFiltrados = itensCardapio.filter(produto => {
     const matchesCategoria = categoriaAtiva === "todos" || produto.categoria === categoriaAtiva;
@@ -163,7 +156,12 @@ function Cardapio() {
                   <form onSubmit={salvarLanche}>
                       <input type="text" placeholder="Nome do Lanche" value={formData.nome} onChange={e => setFormData({...formData, nome: e.target.value})} required />
                       <input type="text" placeholder="Descrição" value={formData.desc} onChange={e => setFormData({...formData, desc: e.target.value})} required />
-                      <input type="text" placeholder="Preço (Ex: R$ 25,90)" value={formData.precoOriginal} onChange={e => setFormData({...formData, precoOriginal: e.target.value})} required />
+                      <input type="text" placeholder="Preço (Ex: R$ 25,90)" value={formData.precoOriginal} onChange={e => {
+                        const valor = e.target.value;
+                        if (valor === "" || Number(valor) >= 0) {
+                          setFormData({...formData, precoOriginal: valor});
+                        }
+                      }} required />
                       <input type="text" placeholder="Categoria" value={formData.categoria} onChange={e => setFormData({...formData, categoria: e.target.value})} required />
                       <input type="text" placeholder="URL da Imagem" value={formData.img} onChange={e => setFormData({...formData, img: e.target.value})} required />
                       

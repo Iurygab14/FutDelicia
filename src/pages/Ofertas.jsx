@@ -82,7 +82,7 @@ function Ofertas() {
 
         <ListaProdutos filtro={busca} />
 
-      {/* NOVA OFERTA */}
+      {/* NOVA OFERTA FORM */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -105,7 +105,13 @@ function Ofertas() {
                 type="text" 
                 placeholder="Ex: R$ 15,00" 
                 value={novaOferta.precoPromo}
-                onChange={e => setNovaOferta({...novaOferta, precoPromo: e.target.value})}
+                onChange={e => {
+                  const valor = e.target.value;
+                        if (valor === "" || Number(valor) >= 0) {
+                          setFormData({...formData, precoPromo: valor});
+                        }
+                      }
+                    }
                 required
               />
 
